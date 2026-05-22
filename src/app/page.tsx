@@ -82,107 +82,109 @@ export default function Home() {
               }}
             />
 
-            {/* ── Contenido — empuja al fondo con flex-1 ── */}
-            <div className="relative z-10 flex flex-col justify-end flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 pb-20 md:pb-24">
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }}
-                className="flex flex-col items-start gap-5 max-w-3xl"
-              >
-                <motion.p
-                  variants={{
-                    hidden: { opacity: 0, y: 16 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-                  }}
-                  className="uppercase tracking-[0.3em] text-[10px] font-semibold"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  Peter Barber · Panamá · Desde &apos;97
-                </motion.p>
-
-                <motion.h1
-                  variants={{
-                    hidden: { opacity: 0, y: 32, filter: 'blur(12px)' },
-                    visible: {
-                      opacity: 1, y: 0, filter: 'blur(0px)',
-                      transition: { duration: 1.1, ease: EASE },
-                    },
-                  }}
-                  className="text-[clamp(2.8rem,8vw,6rem)] font-serif leading-[1.0] tracking-tight text-white"
-                >
-                  Define tu estilo con
-                  <br />
-                  <span className="italic" style={{ color: 'var(--accent)' }}>
-                    tradición &amp; navaja
-                  </span>
-                </motion.h1>
-
-                <motion.p
-                  variants={{
-                    hidden: { opacity: 0, y: 16 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
-                  }}
-                  className="text-base md:text-lg leading-relaxed max-w-lg"
-                  style={{ color: 'rgba(255,255,255,0.68)' }}
-                >
-                  El ritual clásico del caballero, reinventado. Cortes de precisión,
-                  afeitados con toalla caliente y la elegancia de la vieja escuela
-                  en pleno corazón de Panamá.
-                </motion.p>
-
+            {/* ── Contenido anclado al fondo — absolute bottom para no subir nunca ── */}
+            <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-10 md:pb-14">
+              <div className="max-w-7xl mx-auto">
                 <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 12 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-                  }}
-                  className="flex flex-col sm:flex-row gap-3 pt-2"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.13 } } }}
+                  className="flex flex-col items-start gap-4 max-w-2xl"
                 >
-                  <button
-                    onClick={scrollToBooking}
-                    className="btn-gold px-10 py-4 rounded-full text-sm uppercase tracking-widest"
+                  <motion.p
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+                    }}
+                    className="uppercase tracking-[0.28em] text-[10px] font-semibold"
+                    style={{ color: 'var(--accent)' }}
                   >
-                    Reservar mi Corte
-                  </button>
-                  <button
-                    onClick={() =>
-                      document.getElementById('el-club')?.scrollIntoView({ behavior: 'smooth' })
-                    }
-                    className="px-10 py-4 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-300 hover:bg-white/10"
-                    style={{ border: '1.5px solid rgba(255,255,255,0.28)', color: 'rgba(255,255,255,0.85)' }}
-                  >
-                    Conocer el Club
-                  </button>
-                </motion.div>
-              </motion.div>
+                    Peter Barber · Panamá · Desde &apos;97
+                  </motion.p>
 
-              {/* ── Stats strip ── */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.4, duration: 0.8, ease: EASE }}
-                className="mt-10 flex flex-wrap gap-x-8 gap-y-4 pt-6"
-                style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}
-              >
-                {[
-                  { n: '500+', label: 'Clientes satisfechos' },
-                  { n: '25+',  label: 'Años de experiencia' },
-                  { n: '3',    label: 'Sucursales en Panamá' },
-                  { n: '5/5',  label: 'Google Reviews' },
-                ].map((s) => (
-                  <div key={s.label} className="flex flex-col gap-0.5">
-                    <span className="font-serif text-2xl font-bold text-white leading-none">
-                      {s.n}
+                  <motion.h1
+                    variants={{
+                      hidden: { opacity: 0, y: 24, filter: 'blur(10px)' },
+                      visible: {
+                        opacity: 1, y: 0, filter: 'blur(0px)',
+                        transition: { duration: 1.0, ease: EASE },
+                      },
+                    }}
+                    className="font-serif leading-[1.05] tracking-tight text-white"
+                    style={{ fontSize: 'clamp(2rem, 5.5vw, 4.5rem)' }}
+                  >
+                    Define tu estilo con
+                    <br />
+                    <span className="italic" style={{ color: 'var(--accent)' }}>
+                      tradición &amp; navaja
                     </span>
-                    <span
-                      className="text-[10px] uppercase tracking-widest"
-                      style={{ color: 'rgba(255,255,255,0.45)' }}
+                  </motion.h1>
+
+                  <motion.p
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+                    }}
+                    className="text-sm md:text-base leading-relaxed max-w-md"
+                    style={{ color: 'rgba(255,255,255,0.62)' }}
+                  >
+                    El ritual clásico del caballero, reinventado. Cortes de precisión
+                    y afeitados con toalla caliente en pleno corazón de Panamá.
+                  </motion.p>
+
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+                    }}
+                    className="flex flex-col sm:flex-row gap-3 pt-1"
+                  >
+                    <button
+                      onClick={scrollToBooking}
+                      className="btn-gold px-8 py-3.5 rounded-full text-sm uppercase tracking-widest"
                     >
-                      {s.label}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
+                      Reservar mi Corte
+                    </button>
+                    <button
+                      onClick={() =>
+                        document.getElementById('el-club')?.scrollIntoView({ behavior: 'smooth' })
+                      }
+                      className="px-8 py-3.5 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-300 hover:bg-white/10"
+                      style={{ border: '1.5px solid rgba(255,255,255,0.28)', color: 'rgba(255,255,255,0.82)' }}
+                    >
+                      Conocer el Club
+                    </button>
+                  </motion.div>
+                </motion.div>
+
+                {/* ── Stats strip ── */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.2, duration: 0.9, ease: EASE }}
+                  className="mt-7 flex flex-wrap gap-x-7 gap-y-3 pt-5"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.11)' }}
+                >
+                  {[
+                    { n: '500+', label: 'Clientes satisfechos' },
+                    { n: '25+',  label: 'Años de experiencia' },
+                    { n: '3',    label: 'Sucursales en Panamá' },
+                    { n: '5/5',  label: 'Google Reviews' },
+                  ].map((s) => (
+                    <div key={s.label} className="flex flex-col gap-0.5">
+                      <span className="font-serif text-xl font-bold text-white leading-none">
+                        {s.n}
+                      </span>
+                      <span
+                        className="text-[9px] uppercase tracking-widest"
+                        style={{ color: 'rgba(255,255,255,0.4)' }}
+                      >
+                        {s.label}
+                      </span>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </section>
 

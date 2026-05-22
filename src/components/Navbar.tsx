@@ -164,11 +164,11 @@ export default function Navbar() {
               priority
             />
           </div>
-          <div className="leading-none hidden sm:block">
-            <span className="block text-[8px] font-bold tracking-[0.25em] uppercase" style={{ color: 'rgba(14,14,14,0.38)' }}>
+          <div className="leading-none">
+            <span className="hidden sm:block text-[8px] font-bold tracking-[0.25em] uppercase" style={{ color: 'rgba(14,14,14,0.38)' }}>
               Barbería Premium
             </span>
-            <span className="font-serif text-lg font-bold" style={{ color: 'var(--primary)' }}>
+            <span className="font-serif text-base sm:text-lg font-bold" style={{ color: 'var(--primary)' }}>
               Peter Barber
             </span>
           </div>
