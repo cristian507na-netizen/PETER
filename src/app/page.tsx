@@ -59,10 +59,13 @@ export default function Home() {
             id="inicio"
             className="relative h-screen flex flex-col overflow-hidden"
           >
-            {/* ── Foto a full opacity, sin lavado ── */}
+            {/* ── Foto a full opacity, desplazada hacia abajo para mostrar la persona ── */}
             <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
+              className="absolute inset-0 bg-cover bg-no-repeat"
+              style={{
+                backgroundImage: `url('${HERO_IMAGE}')`,
+                backgroundPosition: '50% 65%',
+              }}
             />
 
             {/* ── Overlay oscuro cinematográfico ── */}
@@ -82,8 +85,8 @@ export default function Home() {
               }}
             />
 
-            {/* ── Contenido anclado al fondo — absolute bottom para no subir nunca ── */}
-            <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-10 md:pb-14">
+            {/* ── Contenido anclado al fondo ── */}
+            <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-16 md:pb-20">
               <div className="max-w-7xl mx-auto">
                 <motion.div
                   initial="hidden"
