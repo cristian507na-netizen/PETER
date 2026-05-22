@@ -58,13 +58,15 @@ export default function Home() {
           <section
             id="inicio"
             className="relative h-screen flex flex-col overflow-hidden"
+            style={{ backgroundColor: '#111009' }}
           >
-            {/* ── Foto a full opacity, desplazada hacia abajo para mostrar la persona ── */}
+            {/* ── Foto arranca en top:84px (bajo el navbar pill) ── */}
             <div
-              className="absolute inset-0 bg-cover bg-no-repeat"
+              className="absolute left-0 right-0 bottom-0 bg-cover bg-no-repeat"
               style={{
                 backgroundImage: `url('${HERO_IMAGE}')`,
-                backgroundPosition: '50% 65%',
+                backgroundPosition: '50% 20%',
+                top: '84px',
               }}
             />
 
@@ -73,7 +75,7 @@ export default function Home() {
               className="absolute inset-0"
               style={{
                 background:
-                  'linear-gradient(160deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.82) 100%)',
+                  'linear-gradient(160deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.85) 100%)',
               }}
             />
 
