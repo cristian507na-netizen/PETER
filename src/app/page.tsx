@@ -57,60 +57,45 @@ export default function Home() {
 
           <section
             id="inicio"
-            className="relative h-screen flex items-center justify-center overflow-hidden"
+            className="relative h-screen flex flex-col overflow-hidden"
           >
-            {/* Foto a plena presencia */}
+            {/* ── Foto a full opacity, sin lavado ── */}
             <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url('${HERO_IMAGE}')`,
-                opacity: 0.78,
-              }}
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
             />
 
-            {/* Vignette oscuro suave en bordes para profundidad */}
+            {/* ── Overlay oscuro cinematográfico ── */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  'radial-gradient(ellipse 120% 100% at 50% 50%, transparent 30%, rgba(14,14,14,0.28) 100%)',
+                  'linear-gradient(160deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.82) 100%)',
               }}
             />
 
-            {/* Halo crema radial detrás del texto — solo donde están las letras */}
+            {/* ── Difuminado inferior hacia la siguiente sección ── */}
             <div
-              className="absolute inset-0"
+              className="absolute bottom-0 left-0 right-0 h-40"
               style={{
-                background:
-                  'radial-gradient(ellipse 70% 58% at 50% 46%, rgba(244,239,230,0.82) 0%, rgba(244,239,230,0.22) 60%, transparent 100%)',
+                background: `linear-gradient(to bottom, transparent 0%, var(--background) 100%)`,
               }}
             />
 
-            {/* Difuminado suave hacia la sección siguiente */}
-            <div
-              className="absolute bottom-0 left-0 right-0 h-36"
-              style={{
-                background:
-                  'linear-gradient(to bottom, transparent, var(--background))',
-              }}
-            />
-
-            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24">
+            {/* ── Contenido — empuja al fondo con flex-1 ── */}
+            <div className="relative z-10 flex flex-col justify-end flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 pb-20 md:pb-24">
               <motion.div
                 initial="hidden"
                 animate="visible"
-                variants={{
-                  hidden: {},
-                  visible: { transition: { staggerChildren: 0.16 } },
-                }}
-                className="flex flex-col items-center gap-7"
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }}
+                className="flex flex-col items-start gap-5 max-w-3xl"
               >
                 <motion.p
                   variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+                    hidden: { opacity: 0, y: 16 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
                   }}
-                  className="uppercase tracking-[0.3em] text-[11px] font-semibold"
+                  className="uppercase tracking-[0.3em] text-[10px] font-semibold"
                   style={{ color: 'var(--accent)' }}
                 >
                   Peter Barber · Panamá · Desde &apos;97
@@ -118,16 +103,13 @@ export default function Home() {
 
                 <motion.h1
                   variants={{
-                    hidden: { opacity: 0, y: 28, filter: 'blur(10px)' },
+                    hidden: { opacity: 0, y: 32, filter: 'blur(12px)' },
                     visible: {
-                      opacity: 1,
-                      y: 0,
-                      filter: 'blur(0px)',
+                      opacity: 1, y: 0, filter: 'blur(0px)',
                       transition: { duration: 1.1, ease: EASE },
                     },
                   }}
-                  className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif leading-[1.05] tracking-tight"
-                  style={{ color: 'var(--primary)' }}
+                  className="text-[clamp(2.8rem,8vw,6rem)] font-serif leading-[1.0] tracking-tight text-white"
                 >
                   Define tu estilo con
                   <br />
@@ -138,27 +120,27 @@ export default function Home() {
 
                 <motion.p
                   variants={{
-                    hidden: { opacity: 0, y: 18 },
+                    hidden: { opacity: 0, y: 16 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
                   }}
-                  className="text-base md:text-lg max-w-xl leading-relaxed"
-                  style={{ color: 'rgba(14,14,14,0.62)' }}
+                  className="text-base md:text-lg leading-relaxed max-w-lg"
+                  style={{ color: 'rgba(255,255,255,0.68)' }}
                 >
                   El ritual clásico del caballero, reinventado. Cortes de precisión,
-                  afeitados con toalla caliente y la elegancia de la vieja escuela en
-                  pleno corazón de Panamá.
+                  afeitados con toalla caliente y la elegancia de la vieja escuela
+                  en pleno corazón de Panamá.
                 </motion.p>
 
                 <motion.div
                   variants={{
-                    hidden: { opacity: 0, y: 14 },
+                    hidden: { opacity: 0, y: 12 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
                   }}
-                  className="flex flex-col sm:flex-row gap-3"
+                  className="flex flex-col sm:flex-row gap-3 pt-2"
                 >
                   <button
                     onClick={scrollToBooking}
-                    className="btn-dark px-10 py-4 rounded-full text-sm uppercase tracking-widest"
+                    className="btn-gold px-10 py-4 rounded-full text-sm uppercase tracking-widest"
                   >
                     Reservar mi Corte
                   </button>
@@ -166,40 +148,42 @@ export default function Home() {
                     onClick={() =>
                       document.getElementById('el-club')?.scrollIntoView({ behavior: 'smooth' })
                     }
-                    className="px-10 py-4 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-300 hover:bg-[var(--primary)] hover:text-[var(--accent)]"
-                    style={{
-                      border: '2px solid rgba(14,14,14,0.18)',
-                      color: 'rgba(14,14,14,0.7)',
-                    }}
+                    className="px-10 py-4 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-300 hover:bg-white/10"
+                    style={{ border: '1.5px solid rgba(255,255,255,0.28)', color: 'rgba(255,255,255,0.85)' }}
                   >
                     Conocer el Club
                   </button>
                 </motion.div>
               </motion.div>
-            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.2, duration: 1 }}
-              className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
-              onClick={() =>
-                document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              <span
-                className="uppercase tracking-widest text-[9px]"
-                style={{ color: 'rgba(14,14,14,0.3)' }}
-              >
-                Descubrir
-              </span>
+              {/* ── Stats strip ── */}
               <motion.div
-                animate={{ y: [0, 7, 0] }}
-                transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-                className="w-px h-8"
-                style={{ backgroundColor: 'rgba(201,162,107,0.45)' }}
-              />
-            </motion.div>
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.4, duration: 0.8, ease: EASE }}
+                className="mt-10 flex flex-wrap gap-x-8 gap-y-4 pt-6"
+                style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}
+              >
+                {[
+                  { n: '500+', label: 'Clientes satisfechos' },
+                  { n: '25+',  label: 'Años de experiencia' },
+                  { n: '3',    label: 'Sucursales en Panamá' },
+                  { n: '5/5',  label: 'Google Reviews' },
+                ].map((s) => (
+                  <div key={s.label} className="flex flex-col gap-0.5">
+                    <span className="font-serif text-2xl font-bold text-white leading-none">
+                      {s.n}
+                    </span>
+                    <span
+                      className="text-[10px] uppercase tracking-widest"
+                      style={{ color: 'rgba(255,255,255,0.45)' }}
+                    >
+                      {s.label}
+                    </span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </section>
 
           <ServicesBento />
